@@ -3,6 +3,7 @@ const CACHE_NAME = "gestor-eventos-cache-v1";
 const urlsToCache = [
     "/",
     "/index.html",
+    "/public/Admin/crudAdmin.html",
     "/styles.css",
     "/script.js",
     "/manifest.json",

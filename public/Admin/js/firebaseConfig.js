@@ -21,9 +21,9 @@ const db = getFirestore(app);
 enableIndexedDbPersistence(db)
   .catch((error) => {
     if (error.code === "failed-precondition") {
-      console.error("Persistencia no habilitada. Varias pestañas abiertas.");
+      console.warn("Persistencia no habilitada. Varias pestañas abiertas.");
     } else if (error.code === "unimplemented") {
-      console.error("El navegador no soporta persistencia de IndexedDB.");
+      console.warn("Persistencia no soportada en este navegador.");
     }
   });
 

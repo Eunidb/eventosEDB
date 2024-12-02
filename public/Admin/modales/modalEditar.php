@@ -28,14 +28,6 @@
                         <label class="form-label">Ubicación del Evento</label>
                         <input type="text" name="ubicacion" id="ubicacion" class="form-control" required />
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Precio de Entrada</label>
-                        <input type="number" name="precio" id="precio" class="form-control" required />
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Descripción del Evento</label>
-                        <textarea name="descripcion" id="descripcion" class="form-control" rows="4" required></textarea>
-                    </div>
                     <div class="d-grid gap-2">
                         <button type="submit" class="btn btn-primary btn_add" onclick="window.actualizarEvento(event)">
                             Actualizar datos del evento

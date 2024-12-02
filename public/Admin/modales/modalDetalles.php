@@ -13,8 +13,6 @@
                         <li class="list-group-item"><strong>Fecha:</strong> <span id="fechaEvento"></span></li>
                         <li class="list-group-item"><strong>Hora:</strong> <span id="horaEvento"></span></li>
                         <li class="list-group-item"><strong>Ubicación:</strong> <span id="ubicacionEvento"></span></li>
-                        <li class="list-group-item"><strong>Precio de Entrada:</strong> $<span id="precioEvento"></span></li>
-                        <li class="list-group-item"><strong>Descripción:</strong> <span id="descripcionEvento"></span></li>
                     </ul>
                 </div>
             </div>

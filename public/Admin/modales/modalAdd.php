@@ -27,7 +27,8 @@
                         <label for="ubicacion" class="form-label">Ubicación</label>
                         <input type="text" class="form-control" id="ubicacion" required />
                     </div>
-                    <button type="submit" class="btn btn-primary">Guardar Evento</button>
+                    <button type="submit" class="btn btn-primary" onclick="window.addEvento(event)">Guardar Evento</button>
+
                 </form>
             </div>
         </div>

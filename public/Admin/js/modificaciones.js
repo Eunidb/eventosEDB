@@ -124,31 +124,22 @@ window.addEventListener("DOMContentLoaded", mostrarEventosEnHTML);
 /**
  * Función para agregar un nuevo evento
  */
-window.addNuevoEvento = async function (event) {
+window.addvento = async (event) => {
   event.preventDefault();
 
-  const formulario = document.querySelector("#tablaEventos");
-  const formData = new FormData(formulario);
-
-  // Convertir FormData a un objeto JSON
-  const formDataJSON = {};
-  formData.forEach((value, key) => {
-    formDataJSON[key] = value;
-  });
-
-  const { artista, nombre, fecha, hora, ubicacion } = formDataJSON;
-
   try {
-    await addEvento(artista, nombre, fecha, hora, ubicacion);
-    formulario.reset();
-    setTimeout(() => {
-      $("#agregarEventoModal").css("opacity", "");
-      $("#agregarEventoModal").modal("hide");
-    }, 300);
+    const artista = document.getElementById('artista').value.trim();
+    const nombre = document.getElementById('nombre').value.trim();
+    const fecha = document.getElementById('fecha').value.trim();
+    const hora = document.getElementById('hora').value.trim();
+    const ubicacion = document.getElementById('ubicacion').value.trim();
 
-    window.mostrarAlerta({ tipoToast: "success", mensaje: "¡Evento registrado correctamente!" });
+    await addEvento(artista, nombre, fecha, hora, ubicacion);
+    // Resto del código de éxito
   } catch (error) {
-    console.log(error);
+    console.error("Error al agregar el evento:", error);
+    // Mostrar un mensaje de error al usuario
+    window.mostrarAlerta({ tipoToast: "error", mensaje: "Error al registrar el evento." });
   }
 };
 
@@ -196,12 +187,21 @@ async function getEventoUpdateCollection(id) {
     if (eventoDoc.exists()) {
       const eventoData = eventoDoc.data();
       const { artista, nombre, fecha, hora, ubicacion } = eventoData;
-      document.querySelector("#idEvento").value = id;
-      document.querySelector("#artista").value = artista;
-      document.querySelector("#nombre").value = nombre;
-      document.querySelector("#fecha").value = fecha;
-      document.querySelector("#hora").value = hora;
-      document.querySelector("#ubicacion").value = ubicacion;
+      
+      // Verificar que los elementos existan antes de establecer su valor
+      const idEventoElement = document.querySelector("#idEvento");
+      const artistaElement = document.querySelector("#artista");
+      const nombreElement = document.querySelector("#nombre");
+      const fechaElement = document.querySelector("#fecha");
+      const horaElement = document.querySelector("#hora");
+      const ubicacionElement = document.querySelector("#ubicacion");
+
+      if (idEventoElement) idEventoElement.value = id;
+      if (artistaElement) artistaElement.value = artista || '';
+      if (nombreElement) nombreElement.value = nombre || '';
+      if (fechaElement) fechaElement.value = fecha || '';
+      if (horaElement) horaElement.value = hora || '';
+      if (ubicacionElement) ubicacionElement.value = ubicacion || '';
     } else {
       console.log("No se encontró ningún evento con el ID:", id);
     }
@@ -218,15 +218,26 @@ window.actualizarEvento = async function (event) {
   const formulario = document.querySelector("#formularioEventoEdit");
   const formData = new FormData(formulario);
 
-  // Convertir FormData a un objeto JSON
+  // Convertir FormData a un objeto JSON, eliminando valores undefined
   const formDataJSON = {};
   formData.forEach((value, key) => {
-    formDataJSON[key] = value;
+    if (value !== '') {
+      formDataJSON[key] = value;
+    }
   });
 
   const { idEvento, artista, nombre, fecha, hora, ubicacion } = formDataJSON;
+  
+  // Crear objeto solo con campos no vacíos
+  const updateData = {};
+  if (artista) updateData.artista = artista;
+  if (nombre) updateData.nombre = nombre;
+  if (fecha) updateData.fecha = fecha;
+  if (hora) updateData.hora = hora;
+  if (ubicacion) updateData.ubicacion = ubicacion;
+
   try {
-    await updateEventoCollection(idEvento, { artista, nombre, fecha, hora, ubicacion });
+    await updateEventoCollection(idEvento, updateData);
     formulario.reset();
     setTimeout(() => {
       $("#editarEventoModal").css("opacity", "");
@@ -235,7 +246,8 @@ window.actualizarEvento = async function (event) {
 
     window.mostrarAlerta({ tipoToast: "success", mensaje: "¡Evento actualizado correctamente!" });
   } catch (error) {
-    console.log(error);
+    console.error("Error al actualizar el evento:", error);
+    window.mostrarAlerta({ tipoToast: "error", mensaje: "Error al actualizar el evento" });
   }
 };
 
