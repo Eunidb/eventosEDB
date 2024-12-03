@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="styles.js"></script>
+    <link rel="manifest" href="manifiesto.json">
+</head>
+
+
+<body>
+
+      
+  <!-- header -->
+  <header>
+    <div class="logo">
+      <img src="./images/logo.png" alt="Logo">
+      <h1>Eventos</h1>
+    </div>
+    <nav class="navbar">
+        <ul class="nav-menu">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="conciertos.html">Conciertos</a></li>
+            <li><a href="galeria.html">Galería</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+  </header>
+    <!-- Galería -->
+    <section id="galeria" class="container mx-auto mt-16">
+        <h2 class="text-4xl section-title mb-6">Galería de Conciertos</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="card p-4 rounded-lg">
+                <h3 class="text-2xl mb-4">Conciertos de Rock</h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="/api/placeholder/300/200" alt="Rock 1" class="w-full h-48 object-cover rounded">
+                    <img src="/api/placeholder/300/200" alt="Rock 2" class="w-full h-48 object-cover rounded">
+                </div>
+            </div>
+            <div class="card p-4 rounded-lg">
+                <h3 class="text-2xl mb-4">Conciertos de Rap</h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="/api/placeholder/300/200" alt="Rap 1" class="w-full h-48 object-cover rounded">
+                    <img src="/api/placeholder/300/200" alt="Rap 2" class="w-full h-48 object-cover rounded">
+                </div>
+            </div>
+        </div>
+    </section>
+    <br>
+    <br>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <div class="logo">Gestor<span>Eventos</span></div>
+                <p>Somos tu mejor opción para elegir tu próximo evento.</p>
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="icon"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="icon"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Menú</h4>
+                <ul>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#quienessomos">Quiénes somos</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-address">
+                <h4>Dirección</h4>
+                <p>Tehuacán, Puebla<br> Universidad Tecnológica de Tehuacán<br> México</p>
+            </div>
+        </div>
+        <br>
+        <p class="footer-copyright">Copyright UTT 2024</p>
+    </footer>
+</body>
+</html>

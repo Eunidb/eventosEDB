@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestor de Eventos</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth-compat.js"></script>
+
+    <script type="module">
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js';
+    import { getAuth } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js';
+    </script>
     <link rel="stylesheet" href="styles.css">
     <script src="styles.js"></script>
     <link rel="manifest" href="manifiesto.json">
@@ -22,9 +25,9 @@
     <nav class="navbar">
         <ul class="nav-menu">
             <li><a href="#">Inicio</a></li>
-            <li><a href="#">Conciertos</a></li>
-            <li><a href="#">Galería</a></li>
-            <li><a href="#">Contacto</a></li>
+            <li><a href="conciertos.html">Conciertos</a></li>
+            <li><a href="galeria.html">Galería</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
             <button id="loginBtn"><i class="fas fa-user"></i></button>
         </ul>
     </nav>
@@ -46,8 +49,7 @@
       <h2>LA MEJOR</h2>
       <h1>BANDA DE MÚSICA</h1>
       <p>Ofrecemos una experiencia inolvidable en cada concierto. ¡Únete a nosotros y vive la música como nunca antes!</p>
-      <button>Entretenimiento y Música</button>
-      <button>Comprar Entradas</button>
+      
     </div>
   </section>
 
@@ -138,8 +140,8 @@
     <div class="event-cards">
         <div class="event-card">
             <img src="./images/11916.webp" alt="Evento 1">
-            <h3>BIENVENIDOS A MIS 30’S</h3>
-            <p>Gera MX, el aclamado rapero, regresa a Pachuca con su esperado tour “Bienvenidos a Mis 30’s“. El evento se llevará a cabo el 8 de junio de 2024, a las 21:00 horas, en el Auditorio Explanada Pachuca. Los boletos ya están a la venta en la taquilla del auditorio y en AREMA.</p>
+            <h3>BIENVENIDOS A MIS 30'S</h3>
+            <p>Gera MX, el aclamado rapero, regresa a Pachuca con su esperado tour "Bienvenidos a Mis 30's". El evento se llevará a cabo el 8 de junio de 2024, a las 21:00 horas, en el Auditorio Explanada Pachuca. Los boletos ya están a la venta en la taquilla del auditorio y en AREMA.</p>
         </div>
         <div class="event-card">
             <img src="./images/conA.jpg" alt="Evento 2">
@@ -154,7 +156,17 @@
         <div class="event-card">
             <img src="./images/gonzaloGenek.jpg" alt="Evento 4">
             <h3>Digital Marketing Agency Website</h3>
-            <p>This is a website for a client who wants to achieve their goals and meet their users’ needs while also increasing their reach. Across all platforms. This is a website reload.</p>
+            <p>This is a website for a client who wants to achieve their goals and meet their users' needs while also increasing their reach. Across all platforms. This is a website reload.</p>
+        </div>
+        <div class="event-card">
+            <img src="./images/mexcla.jpg" alt="Evento 3">
+            <h3>MEXCLA Spotify</h3>
+            <p>Este sábado 2 y domingo 3 de noviembre el MEXCLA Spotify se llevará a cabo en las inmediaciones del Parque Bicentenario. La escena del rap mexicana tendrá su participación con exponentes como Rich Mafia en donde se conjuntan Aleman y Gera MX..</p>
+        </div>
+        <div class="event-card">
+            <img src="./images/gonzaloGenek.jpg" alt="Evento 4">
+            <h3>Digital Marketing Agency Website</h3>
+            <p>This is a website for a client who wants to achieve their goals and meet their users' needs while also increasing their reach. Across all platforms. This is a website reload.</p>
         </div>
     </div>
 </section>
@@ -210,9 +222,10 @@
     </footer>
 
      <!-- Scripts -->
-  <script type="module" src="./Admin/js/firebaseConfig.js"></script>
-  <script type="module" src="./Admin/js/auth.js"></script>
-  <script type="module" src="./Admin/js/login.js" defer></script>
+     <script type="module" src="./Admin/js/firebaseConfig.js"></script>
+     <script type="module" src="./Admin/js/auth.js"></script>
+     <script type="module" src="./Admin/js/login.js"></script>
+     
 
   <script src="script.js"></script>
 
@@ -222,8 +235,8 @@
         <span class="close-btn">&times;</span>
         <h2>Iniciar Sesión</h2>
         <form id="loginForm">
-            <input type="email" id="email" placeholder="Correo electrónico" required>
-            <input type="password" id="password" placeholder="Contraseña" required>
+            <input type="email" id="email" placeholder="Correo electrónico" autocomplete="username" required>
+            <input type="password" id="password" placeholder="Contraseña" autocomplete="current-password" required>
             <button type="submit">Ingresar</button>
         </form>
     </div>

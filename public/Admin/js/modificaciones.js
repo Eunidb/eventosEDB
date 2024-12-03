@@ -5,7 +5,6 @@ import {
   getEventoCollection,
   updateEventoCollection,
 } from "./firebaseConfig.js";
-
 /**
  * Función para levantar Evento Modal
  */
@@ -18,7 +17,7 @@ window.miModal = async function (idModal, idEvento = "") {
     switch (idModal) {
       case "agregarEventoModal":
         url = "../Admin/modales/modalAdd.php";
-        break;
+        break
       case "detalleEventoModal":
         url = "../Admin/modales/modalDetalles.php";
         break;
@@ -124,7 +123,7 @@ window.addEventListener("DOMContentLoaded", mostrarEventosEnHTML);
 /**
  * Función para agregar un nuevo evento
  */
-window.addvento = async (event) => {
+window.addEvento = async (event) => {
   event.preventDefault();
 
   try {
@@ -135,7 +134,17 @@ window.addvento = async (event) => {
     const ubicacion = document.getElementById('ubicacion').value.trim();
 
     await addEvento(artista, nombre, fecha, hora, ubicacion);
-    // Resto del código de éxito
+    
+    // Reset the form
+    document.getElementById('formularioEvento').reset();
+    
+    // Hide the modal
+    const modalElement = document.getElementById('agregarEventoModal');
+    const modal = bootstrap.Modal.getInstance(modalElement);
+    modal.hide();
+    
+    // Show success alert
+    window.mostrarAlerta({ tipoToast: "success", mensaje: "Evento agregado correctamente" });
   } catch (error) {
     console.error("Error al agregar el evento:", error);
     // Mostrar un mensaje de error al usuario
@@ -298,3 +307,25 @@ window.mostrarAlerta = function ({ tipoToast, mensaje }) {
     });
   }
 };
+
+// Función para cerrar sesión
+function logout() {
+  signOut(auth).then(() => {
+    // Cierre de sesión exitoso
+    localStorage.removeItem('userToken'); // Eliminar token de usuario
+    // Redirigir al index
+    window.location.href = '/public/index.html'; 
+  }).catch((error) => {
+    // Manejar errores de cierre de sesión
+    console.error('Error al cerrar sesión:', error);
+    alert('Hubo un problema al cerrar sesión');
+  });
+}
+
+// Añadir evento de clic al botón de logout
+document.addEventListener('DOMContentLoaded', () => {
+  const logoutButton = document.getElementById('logoutBtn');
+  if (logoutButton) {
+    logoutButton.addEventListener('click', logout);
+  }
+});

@@ -28,6 +28,27 @@ document.addEventListener("DOMContentLoaded", () => {
   startSlider();
 
 
+  document.addEventListener("DOMContentLoaded", function () {
+    const images = document.querySelectorAll(".event-card img");
+    const options = {
+        root: null,
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.getAttribute("data-src");
+                observer.unobserve(img);
+            }
+        });
+    }, options);
+
+    images.forEach(img => {
+        observer.observe(img);
+    });
+});
 
 
   /* nav*/

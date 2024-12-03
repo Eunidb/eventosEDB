@@ -1,4 +1,4 @@
-import { auth, db } from './firebaseConfig'; 
+import { auth, db, signOut } from './firebaseConfig'; 
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
 async function login(email, password) {
@@ -38,3 +38,33 @@ document.getElementById("login-btn").addEventListener("click", () => {
   const password = document.getElementById("password").value;
   login(email, password);
 });
+// Función para cerrar sesión
+function logout() {
+  signOut(auth).then(() => {
+    // Cierre de sesión exitoso
+    localStorage.removeItem('userToken'); // Eliminar token de usuario
+    sessionStorage.removeItem('userSession'); // Eliminar sesión si la usas
+    
+    // Redirigir al index
+    window.location.href = '../index.html'; 
+  }).catch((error) => {
+    // Manejar errores de cierre de sesión
+    console.error('Error al cerrar sesión:', error);
+    iziToast.error({
+      title: 'Error',
+      message: 'Hubo un problema al cerrar sesión',
+      position: 'topRight'
+    });
+  });
+}
+
+// Añadir evento de clic al botón de logout cuando el DOM esté cargado
+document.addEventListener('DOMContentLoaded', () => {
+  const logoutButton = document.getElementById('logoutBtn');
+  if (logoutButton) {
+    logoutButton.addEventListener('click', logout);
+  }
+});
+
+// Exportar la función por si la necesitas en otro lugar
+export { logout };

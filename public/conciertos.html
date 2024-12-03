@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conciertos Music</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="styles.js"></script>
+    <link rel="manifest" href="manifiesto.json">
+</head>
+<body>
+  <!-- header -->
+  <header class="header-fixed bg-black text-white">
+    <div class="logo flex items-center">
+        <img src="./images/logo.png" alt="Logo" class="w-12 mr-4">
+        <h1>Eventos</h1>
+    </div>
+    <nav class="navbar">
+        <ul class="nav-menu flex space-x-4">
+            <li><a href="index.html" class="hover:text-blue-300">Inicio</a></li>
+            <li><a href="conciertos.html" class="hover:text-blue-300">Conciertos</a></li>
+            <li><a href="galeria.html" class="hover:text-blue-300">Galería</a></li>
+            <li><a href="contacto.html" class="hover:text-blue-300">Contacto</a></li>
+        </ul>
+    </nav>
+</header>
+ <!-- Sección de Inicio -->
+ <section id="inicio" class="container mx-auto mt-10">
+    <h2 class="text-4xl section-title mb-6 text-[#00BFFF]">Próximos Eventos</h2>
+    <div id="eventos" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="card p-6 rounded-lg shadow-lg">
+            <h3 class="text-xl font-bold mb-4">Concierto de Rock</h3>
+            <p>Fecha: 15 de Julio</p>
+            <p>Lugar: Estadio Principal</p>
+            <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded">Comprar Entradas</button>
+        </div>
+        <div class="card p-6 rounded-lg shadow-lg">
+            <h3 class="text-xl font-bold mb-4">Festival de Rap</h3>
+            <p>Fecha: 22 de Agosto</p>
+            <p>Lugar: Anfiteatro Central</p>
+            <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded">Comprar Entradas</button>
+        </div>
+        <div class="card p-6 rounded-lg shadow-lg">
+            <h3 class="text-xl font-bold mb-4">Concierto Electrónica</h3>
+            <p>Fecha: 5 de Septiembre</p>
+            <p>Lugar: Arena Moderna</p>
+            <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded">Comprar Entradas</button>
+        </div>
+        <div class="card p-6 rounded-lg shadow-lg">
+            <h3 class="text-xl font-bold mb-4">Jazz Festival</h3>
+            <p>Fecha: 18 de Octubre</p>
+            <p>Lugar: Teatro Municipal</p>
+            <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded">Comprar Entradas</button>
+        </div>
+        <div class="card p-6 rounded-lg shadow-lg">
+            <h3 class="text-xl font-bold mb-4">Concierto Latino</h3>
+            <p>Fecha: 30 de Noviembre</p>
+            <p>Lugar: Explanada Principal</p>
+            <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded">Comprar Entradas</button>
+        </div>
+        <div class="card p-6 rounded-lg shadow-lg">
+            <h3 class="text-xl font-bold mb-4">Pop Music Night</h3>
+            <p>Fecha: 15 de Diciembre</p>
+            <p>Lugar: Estadio Central</p>
+            <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded">Comprar Entradas</button>
+        </div>
+    </div>
+</section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <div class="logo">Gestor<span>Eventos</span></div>
+                <p>Somos tu mejor opción para elegir tu próximo evento.</p>
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="icon"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="icon"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Menú</h4>
+                <ul>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#quienessomos">Quiénes somos</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-address">
+                <h4>Dirección</h4>
+                <p>Tehuacán, Puebla<br> Universidad Tecnológica de Tehuacán<br> México</p>
+            </div>
+        </div>
+        <br>
+        <p class="footer-copyright">Copyright UTT 2024</p>
+    </footer>
+</body>
+</html>

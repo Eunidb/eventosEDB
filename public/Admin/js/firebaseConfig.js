@@ -48,3 +48,5 @@ export const updateEventoCollection = (id, newFields) =>
 
 // Esta función elimina un documento específico de una colección de eventos en Firestore utilizando su ID como referencia.
 export const deleteEventoCollection = (id) => deleteDoc(doc(db, coleccion, id));
+
+export { db };
