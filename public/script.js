@@ -62,3 +62,93 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
+
+// Inicializa IndexedDB
+const dbName = "GestorEventosDB";
+let db;
+
+function initDB() {
+  const request = indexedDB.open(dbName, 1);
+
+  request.onupgradeneeded = (event) => {
+    db = event.target.result;
+    if (!db.objectStoreNames.contains("eventos")) {
+      const store = db.createObjectStore("eventos", { keyPath: "id", autoIncrement: true });
+      store.createIndex("artista", "artista", { unique: false });
+      store.createIndex("nombreEvento", "nombreEvento", { unique: false });
+    }
+    console.log("IndexedDB configurada.");
+  };
+
+  request.onsuccess = (event) => {
+    db = event.target.result;
+    console.log("IndexedDB inicializada.");
+  };
+
+  request.onerror = (event) => {
+    console.error("Error al abrir IndexedDB:", event.target.error);
+  };
+}
+
+// Agregar un nuevo evento
+function agregarEvento(evento) {
+  const transaction = db.transaction(["eventos"], "readwrite");
+  const store = transaction.objectStore("eventos");
+  store.add(evento);
+
+  transaction.oncomplete = () => {
+    console.log("Evento agregado con éxito:", evento);
+  };
+
+  transaction.onerror = (event) => {
+    console.error("Error al agregar evento:", event.target.error);
+  };
+}
+
+// Obtener todos los eventos
+function obtenerEventos(callback) {
+  const transaction = db.transaction(["eventos"], "readonly");
+  const store = transaction.objectStore("eventos");
+  const request = store.getAll();
+
+  request.onsuccess = () => {
+    callback(request.result);
+  };
+
+  request.onerror = (event) => {
+    console.error("Error al obtener eventos:", event.target.error);
+  };
+}
+
+// Eliminar un evento por ID
+function eliminarEvento(id) {
+  const transaction = db.transaction(["eventos"], "readwrite");
+  const store = transaction.objectStore("eventos");
+  store.delete(id);
+
+  transaction.oncomplete = () => {
+    console.log(`Evento con ID ${id} eliminado con éxito.`);
+  };
+
+  transaction.onerror = (event) => {
+    console.error("Error al eliminar evento:", event.target.error);
+  };
+}
+
+// Actualizar un evento
+function actualizarEvento(evento) {
+  const transaction = db.transaction(["eventos"], "readwrite");
+  const store = transaction.objectStore("eventos");
+  store.put(evento);
+
+  transaction.oncomplete = () => {
+    console.log("Evento actualizado:", evento);
+  };
+
+  transaction.onerror = (event) => {
+    console.error("Error al actualizar evento:", event.target.error);
+  };
+}
+
+// Inicializa la base de datos al cargar la página
+initDB();
