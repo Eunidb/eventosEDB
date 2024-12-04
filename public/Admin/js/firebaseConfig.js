@@ -18,12 +18,15 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 // Habilitar persistencia offline
+// Habilitar persistencia offline con manejo de errores más detallado
 enableIndexedDbPersistence(db)
-  .catch((error) => {
-    if (error.code === "failed-precondition") {
-      console.warn("Persistencia no habilitada. Varias pestañas abiertas.");
-    } else if (error.code === "unimplemented") {
-      console.warn("Persistencia no soportada en este navegador.");
+  .catch((err) => {
+    if (err.code === 'failed-precondition') {
+      // Múltiples pestañas abiertas, la persistencia solo puede habilitarse en una pestaña a la vez
+      console.warn('Persistencia deshabilitada: múltiples pestañas abiertas');
+    } else if (err.code === 'unimplemented') {
+      // El navegador actual no es compatible con todas las características necesarias
+      console.warn('Persistencia no soportada en este navegador');
     }
   });
 
